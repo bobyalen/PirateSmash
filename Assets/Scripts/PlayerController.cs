@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 //[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    Attack playerAttack;
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
@@ -17,10 +18,14 @@ public class PlayerController : MonoBehaviour
     private float speed = 8f;
     [SerializeField]
     private float jumpingPower = 16f;
-    [SerializeField]
-    public float attackDelay = 0.3f;
     public bool attackBlocked;
     private bool isFacingRight = true;
+
+
+    private void Start()
+    {
+        playerAttack = GetComponent<Attack>();
+    }
 
     void Update()
     {
@@ -62,13 +67,10 @@ public class PlayerController : MonoBehaviour
 
 
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
 
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-
-
-
     }
 
     private void Flip()
@@ -89,18 +91,8 @@ public class PlayerController : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-
-
         animator.SetTrigger("Attack");
         Debug.Log("player is attacking and q is pressed");
-        StartCoroutine(DelayAttack());
-
-
-
-    }
-
-    private IEnumerator DelayAttack()
-    {
-        yield return new WaitForSeconds(attackDelay);
+        playerAttack.playerAttack();
     }
 }
