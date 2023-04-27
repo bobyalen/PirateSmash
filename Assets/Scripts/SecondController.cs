@@ -5,9 +5,6 @@ using UnityEngine.InputSystem;
 
 public class SecondController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public class PlayerController : MonoBehaviour
-    {
         public Rigidbody2D rb;
         public Transform groundCheck;
         public LayerMask groundLayer;
@@ -67,5 +64,4 @@ public class SecondController : MonoBehaviour
         {
             horizontal = context.ReadValue<Vector2>().x;
         }
-    }
 }
