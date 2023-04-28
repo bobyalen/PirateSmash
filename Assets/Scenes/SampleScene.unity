@@ -285,19 +285,7 @@ MonoBehaviour:
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 27206074}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_DeviceRegainedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -306,11 +294,35 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 18390b3d-3287-4262-b602-48cf411b7d56
     m_ActionName: Gameplay/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0fc790e5-5a96-4b79-bd76-7c9e509c100d
     m_ActionName: Gameplay/Jump[/Keyboard/upArrow]
   m_NeverAutoSwitchControlSchemes: 0
@@ -540,7 +552,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1067224407}
   - component: {fileID: 1067224409}
-  - component: {fileID: 1067224408}
   m_Layer: 0
   m_Name: AttackHitbox
   m_TagString: Untagged
@@ -563,20 +574,6 @@ Transform:
   m_Father: {fileID: 1490165453}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1067224408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067224406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 553f8742a2d77d24fb918b56f5292c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 1490165459}
-  dmg: {fileID: 1490165460}
 --- !u!61 &1067224409
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -781,9 +778,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   animator: {fileID: 1490165454}
+  attackDelay: 0.3
   speed: 8
   jumpingPower: 16
-  attackDelay: 0.3
   attackBlocked: 0
 --- !u!114 &1490165458
 MonoBehaviour:

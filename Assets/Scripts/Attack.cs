@@ -6,35 +6,24 @@ public class Attack : MonoBehaviour
 {
     [SerializeField]
     Health health;
-    [SerializeField]
-    public float attackDelay = 0.3f;
     public Transform attackOrgin;
     public float range = 0.5f;
     public LayerMask layer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    RaycastHit2D[] hit;
+    bool damaged;
 
     public void playerAttack()
     {
-        Debug.Log("swinging");
         Collider2D[] hit = Physics2D.OverlapCircleAll(attackOrgin.position,range,layer);
 
-        foreach(Collider2D enemy in hit)
+        if(!damaged)
         {
-            int dmg = attackDamage();
-            health.takeDamage(dmg);
+            foreach(Collider2D enemy in hit)
+            {
+                enemy.GetComponent<Health>().takeDamage(attackDamage());
+                damaged = true;
+            }
         }
-
-        StartCoroutine(DelayAttack());
     }
 
     private void OnDrawGizmosSelected()
@@ -46,14 +35,13 @@ public class Attack : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackOrgin.position, range);
     }
-
-private IEnumerator DelayAttack()
-{
-    yield return new WaitForSeconds(attackDelay);
-}
 public int attackDamage()
     {
         return 2;
     }
 
+    public void ResetDamaged()
+    {
+        damaged= false;
+    }
 }
