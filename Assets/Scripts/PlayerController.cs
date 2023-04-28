@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public Animator animator;
 
+    [SerializeField]
+    public float attackDelay = 0.3f;
+
     private float horizontal;
     [SerializeField]
     private float speed = 8f;
@@ -51,8 +54,6 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsJumping", true);
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             Debug.Log("player is grounded and w is pressed");
-
-
 
         }
 
@@ -94,5 +95,14 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("Attack");
         Debug.Log("player is attacking and q is pressed");
         playerAttack.playerAttack();
+
+        StartCoroutine(DelayAttack());
+    }
+
+
+
+    private IEnumerator DelayAttack()
+    {
+        yield return new WaitForSeconds(attackDelay);
     }
 }

@@ -23,17 +23,19 @@ public class Health : MonoBehaviour
         
     }
 
+  
 
-    public void takeDamage(float dmg)
+    public void takeDamage(int dmg)
     {
-        curHealth-=(int)dmg;
+        curHealth -= (int)dmg;
         animator.SetTrigger("Hurt");
         Debug.Log("player hit with " + dmg + "New HP: " + curHealth);
-        if (curHealth<=0)
+        if (curHealth <= 0)
         {
             Die();
         }
     }
+
 
     void Die()
     {
