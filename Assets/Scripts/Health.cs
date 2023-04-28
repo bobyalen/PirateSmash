@@ -11,27 +11,30 @@ public class Health : MonoBehaviour
     int curHealth;
     // Start is called before the first frame update
      Animator animator;
+    public HealthBar bar;
     void Start()
     {
         animator = GetComponent<Animator>();
         curHealth= maxHealth;
+        bar.SetMax(maxHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        bar.SetCurHealth(curHealth);
     }
 
   
 
     public void takeDamage(int dmg)
     {
-        curHealth -= (int)dmg;
+        curHealth -= dmg;
         animator.SetTrigger("Hurt");
         Debug.Log("player hit with " + dmg + "New HP: " + curHealth);
         if (curHealth <= 0)
         {
+            bar.SetCurHealth(curHealth);
             Die();
         }
     }
