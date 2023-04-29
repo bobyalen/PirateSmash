@@ -35,7 +35,7 @@ public class Attack : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackOrgin.position, range);
     }
-public int attackDamage()
+    public int attackDamage()
     {
         return 2;
     }
