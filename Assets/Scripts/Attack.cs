@@ -20,8 +20,17 @@ public class Attack : MonoBehaviour
         {
             foreach(Collider2D enemy in hit)
             {
-                enemy.GetComponent<Health>().takeDamage(attackDamage());
-                damaged = true;
+                if(!enemy.GetComponent<BlockManager>().blocked)
+                {
+                    Debug.Log("Not blocked attacking: " + enemy.GetComponent<BlockManager>().blocked);
+                    enemy.GetComponent<Health>().takeDamage(attackDamage());
+                    damaged = true;
+                }
+                else
+                {
+                    Debug.Log("Blocked: " + enemy.GetComponent<BlockManager>().blocked);
+                    enemy.GetComponent<BlockManager>().playerBlock();
+                }
             }
         }
     }

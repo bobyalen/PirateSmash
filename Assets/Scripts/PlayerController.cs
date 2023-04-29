@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     Attack playerAttack;
-    Health playerHealth;
+    BlockManager playerBlock;
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
@@ -22,14 +22,13 @@ public class PlayerController : MonoBehaviour
     private float speed = 8f;
     [SerializeField]
     private float jumpingPower = 16f;
-    public bool attackBlocked;
     private bool isFacingRight = true;
 
 
     private void Start()
     {
         playerAttack = GetComponent<Attack>();
-        playerHealth = GetComponent<Health>();
+        playerBlock = GetComponent<BlockManager>();
     }
 
     void Update()
@@ -65,14 +64,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("player is grounded and w is pressed");
 
         }
-        /*
         if (context.canceled && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             animator.SetBool("IsJumping", false);
 
         }
-        */
     }
 
 
@@ -109,15 +106,12 @@ public class PlayerController : MonoBehaviour
     
     public void Block(InputAction.CallbackContext context)
     {
-        attackBlocked= true;
-        Debug.Log("Blocking: " + attackBlocked);
-    }
-    
-    public void cancelBlock(InputAction.CallbackContext context)
-    {
-        attackBlocked= false;
+        if(!playerBlock.blocked)
+        {
+            playerBlock.playerBlock();
+            Debug.Log("Blocking: " + playerBlock.blocked);
+        }
 
-        Debug.Log("Blocking: " + attackBlocked);
     }
 
 

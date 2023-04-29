@@ -136,11 +136,10 @@ GameObject:
   - component: {fileID: 27206076}
   - component: {fileID: 27206075}
   - component: {fileID: 27206070}
-  - component: {fileID: 27206074}
-  - component: {fileID: 27206073}
   - component: {fileID: 27206072}
   - component: {fileID: 27206071}
   - component: {fileID: 27206077}
+  - component: {fileID: 27206078}
   m_Layer: 8
   m_Name: player2
   m_TagString: Player
@@ -271,87 +270,6 @@ MonoBehaviour:
   maxHealth: 10
   curHealth: 0
   bar: {fileID: 5677279299792330911}
---- !u!114 &27206073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27206067}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: aa15cabbb739f62469f2ba871c258acf, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Move
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 18390b3d-3287-4262-b602-48cf411b7d56
-    m_ActionName: Gameplay/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 0fc790e5-5a96-4b79-bd76-7c9e509c100d
-    m_ActionName: Gameplay/Jump[/Keyboard/upArrow]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Gameplay
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &27206074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27206067}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae518d599e277ca4da70a00e7c19b526, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 27206075}
-  groundCheck: {fileID: 637095198}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  speed: 8
-  jumpingPower: 16
 --- !u!50 &27206075
 Rigidbody2D:
   serializedVersion: 4
@@ -415,6 +333,19 @@ MonoBehaviour:
   player: {fileID: 27206067}
   respawn: {fileID: 410929547}
   text: {fileID: 168010391}
+--- !u!114 &27206078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27206067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1253d5b488ef18644831efd1fe8060ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blocked: 1
 --- !u!1 &168010389
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +900,7 @@ GameObject:
   - component: {fileID: 1490165460}
   - component: {fileID: 1490165459}
   - component: {fileID: 1490165461}
+  - component: {fileID: 1490165462}
   m_Layer: 7
   m_Name: player1
   m_TagString: Player
@@ -1134,7 +1066,6 @@ MonoBehaviour:
   attackDelay: 0.3
   speed: 8
   jumpingPower: 10
-  attackBlocked: 0
 --- !u!114 &1490165458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1294,6 +1225,19 @@ MonoBehaviour:
   player: {fileID: 1490165451}
   respawn: {fileID: 565820936}
   text: {fileID: 1162157450}
+--- !u!114 &1490165462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490165451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1253d5b488ef18644831efd1fe8060ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blocked: 0
 --- !u!1 &1630697216
 GameObject:
   m_ObjectHideFlags: 0
