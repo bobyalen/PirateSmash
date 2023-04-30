@@ -27,7 +27,7 @@ public class Rounds : MonoBehaviour
 
     public void liveLost()
     {
-        if(!roundended)
+        if (!roundended)
         {
             lives--;
         }
@@ -35,8 +35,8 @@ public class Rounds : MonoBehaviour
 
     public void ResetRound()
     {
-        player.transform.position=respawn.position;
-        player2.transform.position= player2.GetComponent<Rounds>().respawn.position;
+        player.transform.position = respawn.position;
+        player2.transform.position = player2.GetComponent<Rounds>().respawn.position;
         player.GetComponent<Health>().resetHealth();
         player2.GetComponent<Health>().resetHealth();
     }
@@ -46,12 +46,12 @@ public class Rounds : MonoBehaviour
         roundended = true;
         yield return new WaitForSeconds(0.5f);
         ResetRound();
-        roundended= false;
+        roundended = false;
     }
 
     public void GameOver()
     {
         GameOverUI.SetActive(true);
-        winnerText.text = player2.name + " Has Won";
+        winnerText.text = player2.name + " is swimming with the fishes";
     }
 }
