@@ -12,6 +12,8 @@ public class Attack : MonoBehaviour
     RaycastHit2D[] hit;
     bool damaged;
 
+    public float knockbackForce;
+
     public void playerAttack()
     {
         Collider2D[] hit = Physics2D.OverlapCircleAll(attackOrgin.position,range,layer);
@@ -24,6 +26,8 @@ public class Attack : MonoBehaviour
                 {
                     Debug.Log("Not blocked attacking: " + enemy.GetComponent<BlockManager>().blocked);
                     enemy.GetComponent<Health>().takeDamage(attackDamage());
+                    KnockBack(enemy.GetComponent<Rigidbody2D>(), dmgDirection(enemy.GetComponent<Transform>()));
+                    Debug.Log("Direction: " + dmgDirection(enemy.GetComponent<Transform>()));
                     damaged = true;
                 }
                 else
@@ -46,11 +50,27 @@ public class Attack : MonoBehaviour
     }
     public int attackDamage()
     {
-        return 2;
+        return 10;
     }
 
     public void ResetDamaged()
     {
         damaged= false;
     }
+
+    //Knockback
+    #region
+    public void KnockBack(Rigidbody2D rb, Vector2 dir)
+    {
+        rb.AddForce(dir*knockbackForce,ForceMode2D.Impulse);
+    }
+
+    Vector2 dmgDirection(Transform other)
+    {
+        return (other.position - transform.position).normalized;
+    }
+
+    #endregion
+
+
 }

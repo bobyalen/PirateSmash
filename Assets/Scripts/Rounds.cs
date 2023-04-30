@@ -29,7 +29,7 @@ public class Rounds : MonoBehaviour
 
     public IEnumerator Roundreset()
     {
-        yield return(2);
+        yield return new WaitForSeconds(5f);
         ResetRound();
     }
 
