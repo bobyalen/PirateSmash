@@ -12,7 +12,7 @@ public class Attack : MonoBehaviour
     RaycastHit2D[] hit;
     bool damaged;
 
-    public float knockbackForce;
+    public float knockbackForce = 2f;
 
     public void playerAttack()
     {
@@ -50,7 +50,7 @@ public class Attack : MonoBehaviour
     }
     public int attackDamage()
     {
-        return 10;
+        return 100;
     }
 
     public void ResetDamaged()

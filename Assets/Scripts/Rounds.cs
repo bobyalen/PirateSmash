@@ -8,6 +8,7 @@ public class Rounds : MonoBehaviour
 {
     public int lives = 2;
     public GameObject player;
+    public GameObject player2;
     public Transform respawn;
     public TextMeshProUGUI text;
     // Update is called once per frame
@@ -24,12 +25,14 @@ public class Rounds : MonoBehaviour
     public void ResetRound()
     {
         player.transform.position=respawn.position;
+        player2.transform.position= player2.GetComponent<Rounds>().respawn.position;
         player.GetComponent<Health>().resetHealth();
+        player2.GetComponent<Health>().resetHealth();
     }
 
     public IEnumerator Roundreset()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(0.5f);
         ResetRound();
     }
 
