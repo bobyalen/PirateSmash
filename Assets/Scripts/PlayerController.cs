@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
 
     [SerializeField]
-    public float attackDelay = 0.3f;
+    public float attackDelay = 1.0f;
 
     private float horizontal;
     [SerializeField]
@@ -119,6 +119,5 @@ public class PlayerController : MonoBehaviour
     private IEnumerator DelayAttack()
     {
         yield return new WaitForSeconds(attackDelay);
-        playerAttack.ResetDamaged();
     }
 }

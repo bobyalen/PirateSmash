@@ -7,6 +7,7 @@ using TMPro;
 public class Rounds : MonoBehaviour
 {
     public int lives = 2;
+    public bool roundended;
     public GameObject player;
     public GameObject player2;
     public GameObject GameOverUI;
@@ -26,7 +27,10 @@ public class Rounds : MonoBehaviour
 
     public void liveLost()
     {
-        lives--;
+        if(!roundended)
+        {
+            lives--;
+        }
     }
 
     public void ResetRound()
@@ -39,8 +43,10 @@ public class Rounds : MonoBehaviour
 
     public IEnumerator Roundreset()
     {
+        roundended = true;
         yield return new WaitForSeconds(0.5f);
         ResetRound();
+        roundended= false;
     }
 
     public void GameOver()
