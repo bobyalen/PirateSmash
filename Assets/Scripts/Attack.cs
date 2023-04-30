@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    [SerializeField]
-    Health health;
     public Transform attackOrgin;
     public float range = 0.5f;
     public LayerMask layer;
@@ -30,12 +28,11 @@ public class Attack : MonoBehaviour
                     Debug.Log("Direction: " + dmgDirection(enemy.GetComponent<Transform>()));
                     damaged = true;
                 }
-                else
-                {
-                    Debug.Log("Blocked: " + enemy.GetComponent<BlockManager>().blocked);
-                    enemy.GetComponent<BlockManager>().playerBlock();
-                }
             }
+        }
+        else
+        {
+            Debug.Log("not Hitting");
         }
     }
 
@@ -50,7 +47,15 @@ public class Attack : MonoBehaviour
     }
     public int attackDamage()
     {
-        return 100;
+        if (!GetComponent<PlayerController>().IsGrounded())
+        {
+
+            return (int)(10 * 1.35);
+        }
+        else
+        {
+            return 10;
+        }
     }
 
     public void ResetDamaged()

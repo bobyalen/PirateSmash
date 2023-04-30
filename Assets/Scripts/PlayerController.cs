@@ -119,5 +119,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator DelayAttack()
     {
         yield return new WaitForSeconds(attackDelay);
+        playerAttack.ResetDamaged();
     }
 }

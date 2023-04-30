@@ -3150,7 +3150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - name: player1
+  - name: Player 1
     routes:
     - original: 37
       remapped: 37
@@ -3164,7 +3164,7 @@ MonoBehaviour:
       remapped: 31
     - original: 19
       remapped: 19
-  - name: player2
+  - name: Player 2
     routes:
     - original: 37
       remapped: 63
@@ -13710,7 +13710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2, y: -3.9000018}
+  m_AnchoredPosition: {x: 2, y: -3.899994}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &841495807985022321
@@ -14282,7 +14282,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1110111167432269575}
-  - component: {fileID: 1110111167432269577}
   m_Layer: 0
   m_Name: AttackHitbox
   m_TagString: Untagged
@@ -14305,32 +14304,6 @@ Transform:
   m_Father: {fileID: 1110111167980768413}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1110111167432269577
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110111167432269574}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.8626846, y: -1.1357098}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.7253687, y: 7.6661253}
-  m_EdgeRadius: 0
 --- !u!1 &1110111167866186839
 GameObject:
   m_ObjectHideFlags: 0
@@ -14529,13 +14502,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae671fa0305c8d142ace6a8386015ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 6013628168186375060}
   attackOrgin: {fileID: 1110111167432269575}
-  range: 0.95
+  range: 1.22
   layer:
     serializedVersion: 2
     m_Bits: 256
-  knockbackForce: 5
+  knockbackForce: 2
 --- !u!114 &1110111167980768389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15128,7 +15100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 316, y: 311.8535}
+  m_AnchoredPosition: {x: 356, y: 311.8535}
   m_SizeDelta: {x: 631.5, y: 102.2983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6013628167815250854
@@ -15345,25 +15317,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &6013628168186375067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6013628168186375071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae671fa0305c8d142ace6a8386015ebf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 0}
-  attackOrgin: {fileID: 6013628169588085893}
-  range: 1.22
-  layer:
-    serializedVersion: 2
-    m_Bits: 128
-  knockbackForce: 2
 --- !u!1 &6013628168186375071
 GameObject:
   m_ObjectHideFlags: 0
@@ -15378,11 +15331,11 @@ GameObject:
   - component: {fileID: 6013628168186375063}
   - component: {fileID: 6013628168186375066}
   - component: {fileID: 6013628168186375060}
-  - component: {fileID: 6013628168186375067}
   - component: {fileID: 6013628168186375057}
   - component: {fileID: 6013628168186375058}
   - component: {fileID: 6013628168186375072}
   - component: {fileID: 6013628168186375073}
+  - component: {fileID: 6013628168186375074}
   m_Layer: 8
   m_Name: Player 2
   m_TagString: Player
@@ -15509,6 +15462,24 @@ MonoBehaviour:
   attackDelay: 0.3
   speed: 8
   jumpingPower: 16
+--- !u!114 &6013628168186375074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013628168186375071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae671fa0305c8d142ace6a8386015ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackOrgin: {fileID: 6013628169588085893}
+  range: 1.22
+  layer:
+    serializedVersion: 2
+    m_Bits: 128
+  knockbackForce: 2
 --- !u!1 &6013628168797046577
 GameObject:
   m_ObjectHideFlags: 0
@@ -15549,7 +15520,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6013628169588085893}
-  - component: {fileID: 6013628169588085895}
   m_Layer: 0
   m_Name: AttackHitbox
   m_TagString: Untagged
@@ -15572,32 +15542,6 @@ Transform:
   m_Father: {fileID: 6013628168186375065}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &6013628169588085895
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6013628169588085892}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.8626846, y: -1.1357098}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.7253687, y: 7.6661253}
-  m_EdgeRadius: 0
 --- !u!1 &6504868285523045392
 GameObject:
   m_ObjectHideFlags: 0
@@ -16053,7 +15997,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -318.75, y: 311.8535}
+  m_AnchoredPosition: {x: -360, y: 311.8535}
   m_SizeDelta: {x: 631.5, y: 102.2983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8970901050992588977

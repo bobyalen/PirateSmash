@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlockManager : MonoBehaviour
 {
-    public bool blocked;
+    public bool blocked = false;
     public void playerBlock()
     {
         StartCoroutine(blocking());

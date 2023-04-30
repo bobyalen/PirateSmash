@@ -13,7 +13,6 @@ public class Health : MonoBehaviour
      Animator animator;
     public HealthBar bar;
     Rounds round;
-    bool blocking;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -37,8 +36,6 @@ public class Health : MonoBehaviour
 
     public void takeDamage(int dmg)
     {
-        if (!blocking)
-        {
             curHealth -= dmg;
             animator.SetTrigger("Hurt");
             Debug.Log("player hit with " + dmg + "New HP: " + curHealth);
@@ -47,8 +44,6 @@ public class Health : MonoBehaviour
                 bar.SetCurHealth(curHealth);
                 Die();
             }
-        }
-
     }
 
 
@@ -62,11 +57,6 @@ public class Health : MonoBehaviour
         {
             round.GameOver();
         }
-    }
-
-    public void block()
-    {
-        blocking = true;
     }
 
 }
