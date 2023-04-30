@@ -97,11 +97,14 @@ public class PlayerController : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        animator.SetTrigger("Attack");
-        Debug.Log("player is attacking and q is pressed");
-        playerAttack.playerAttack();
+        if (!attackPlaying())
+        {
+            animator.SetTrigger("Attack");
+            Debug.Log("player is attacking and q is pressed");
+            playerAttack.playerAttack();
+        }
 
-        StartCoroutine(DelayAttack());
+        //StartCoroutine(DelayAttack());
     }
     
     public void Block(InputAction.CallbackContext context)
@@ -114,7 +117,15 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
+    bool attackPlaying()
+    {
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            // Avoid any reload.
+            return true;
+        }
+        return false;
+    }
 
     private IEnumerator DelayAttack()
     {
