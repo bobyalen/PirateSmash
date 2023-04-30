@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     Attack playerAttack;
+    BlockManager playerBlock;
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
@@ -21,13 +22,13 @@ public class PlayerController : MonoBehaviour
     private float speed = 8f;
     [SerializeField]
     private float jumpingPower = 16f;
-    public bool attackBlocked;
     private bool isFacingRight = true;
 
 
     private void Start()
     {
         playerAttack = GetComponent<Attack>();
+        playerBlock = GetComponent<BlockManager>();
     }
 
     void Update()
@@ -39,6 +40,13 @@ public class PlayerController : MonoBehaviour
         else if (isFacingRight && horizontal < 0f)
         {
             Flip();
+        }
+        if (animator.GetBool("IsJumping"))
+        {
+            if (IsGrounded())
+            {
+                animator.SetBool("IsJumping", false);
+            }
         }
     }
 
@@ -56,10 +64,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("player is grounded and w is pressed");
 
         }
-
         if (context.canceled && rb.velocity.y > 0f)
         {
-
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             animator.SetBool("IsJumping", false);
 
@@ -70,7 +76,6 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGrounded()
     {
-
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
@@ -97,6 +102,16 @@ public class PlayerController : MonoBehaviour
         playerAttack.playerAttack();
 
         StartCoroutine(DelayAttack());
+    }
+    
+    public void Block(InputAction.CallbackContext context)
+    {
+        if(!playerBlock.blocked)
+        {
+            playerBlock.playerBlock();
+            Debug.Log("Blocking: " + playerBlock.blocked);
+        }
+
     }
 
 
