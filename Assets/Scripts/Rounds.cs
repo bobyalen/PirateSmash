@@ -9,9 +9,16 @@ public class Rounds : MonoBehaviour
     public int lives = 2;
     public GameObject player;
     public GameObject player2;
+    public GameObject GameOverUI;
     public Transform respawn;
     public TextMeshProUGUI text;
+    public TextMeshProUGUI winnerText;
     // Update is called once per frame
+
+    private void Start()
+    {
+        GameOverUI.SetActive(false);
+    }
     void Update()
     {
         text.text = lives.ToString();
@@ -36,5 +43,9 @@ public class Rounds : MonoBehaviour
         ResetRound();
     }
 
-
+    public void GameOver()
+    {
+        GameOverUI.SetActive(true);
+        winnerText.text = player2.name + " Has Won";
+    }
 }

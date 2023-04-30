@@ -60,7 +60,7 @@ public class Health : MonoBehaviour
         StartCoroutine(round.Roundreset());
         if(round.lives == 0)
         {
-            Destroy(gameObject);
+            round.GameOver();
         }
     }
 
